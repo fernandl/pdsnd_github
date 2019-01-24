@@ -7,7 +7,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asks user to specify a city (Chicago, Washington, New Yor City), month, and day to analyze.
 
     Returns:
         (str) city - name of the city to analyze
@@ -183,7 +183,7 @@ def user_stats(df):
     print('-'*40)
 
 def raw_data(df):
-     """Displays raw data based on user decision"""
+    """Displays raw data based on user decision"""
      
     counter = 0
     while True:
