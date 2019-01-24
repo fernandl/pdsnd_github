@@ -8,7 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asks user to specify a city (Chicago, NY or Washington), month, and day to analyze.
 
     Returns:
         (str) city - name of the city to analyze
@@ -17,7 +17,7 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
         city = input('Please, enter a city between Chicago, New York City and Washington to inquire about:\n').lower()
         if city not in CITY_DATA:
@@ -34,7 +34,7 @@ def get_filters():
             print('\nYou have entered an invalid month.\nPlease chose a month between january and june or "all"\n')
             continue
         else:
-            break  
+            break
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     DAY_DATA = {'1':'Sunday','2':'Monday','3':'Tuesday','4':'Wednesday','5':'Thursday','6':'Friday','7':'Saturday','all':'all'}
@@ -45,7 +45,7 @@ def get_filters():
             continue
         else:
             day = DAY_DATA[day]
-            break     
+            break
 
     print('-'*40)
     return city, month, day
@@ -62,13 +62,13 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    df = pd.read_csv(CITY_DATA[city])   
-    
+    df = pd.read_csv(CITY_DATA[city])
+
     # Convert col to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     # Create new columns
-    df['month'] = df['Start Time'].dt.month    
+    df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
 
     # filter by month if applicable
@@ -98,7 +98,7 @@ def time_stats(df):
     month_check = ['january','february','march','april','may','june','all']
     common_month = df['month'].mode()[0]
     print('The most common month is:', month_check[common_month-1].capitalize())
-    
+
     # display the most common day of week
     common_day = df['day_of_week'].mode()[0]
     print('\nThe most common day is:',common_day)
@@ -160,18 +160,18 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
-    user_count = df['User Type'].value_counts() 
+    user_count = df['User Type'].value_counts()
     for user in range(len(user_count)):
         print('\nType of user: "{}", has {} counts'.format(user_count.index[user],user_count[user]))
-        
+
 
     # Display counts of gender
     try:
-        gender_count = df['Gender'].value_counts() 
+        gender_count = df['Gender'].value_counts()
         for user in range(len(gender_count)):
             print('\nType of user {}, has {} counts'.format(gender_count.index[user],gender_count[user]))
     except(KeyError):
-        print('\nSorry, no information about "Gender" was provided on the source file')            
+        print('\nSorry, no information about "Gender" was provided on the source file')
 
     # Display earliest, most recent, and most common year of birth
     try:
@@ -179,22 +179,22 @@ def user_stats(df):
         print('\nMost recent year of birth is: ', int(df['Birth Year'].max()))
         print('\nMost common year of birth is: ', int(df['Birth Year'].mode()))
     except(KeyError):
-        print('\nSorry, no information about "Birth Year" was provided on the source file')            
+        print('\nSorry, no information about "Birth Year" was provided on the source file')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def raw_data(df):
      """Displays raw data based on user decision"""
-     
+
     counter = 0
     while True:
-        counter = counter +5 
-        show = input('Do you want to see somme raw data, five rows at a time? "Y" for yes or anything else for no\n').lower()        
+        counter = counter +5
+        show = input('Do you want to see somme raw data, five rows at a time? "Y" for yes or anything else for no\n').lower()
         if show == 'y':
             print('Raw data:\n',df[counter-5:counter])
         else:
             break
-  
+
 def main():
     while True:
         city, month, day = get_filters()
