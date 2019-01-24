@@ -2,7 +2,7 @@
 January 23rd, 2019
 
 ### Project Title
-Replace the Project Title
+Git Hub Project
 
 ### Description
 Describe what your project is about and what it does
