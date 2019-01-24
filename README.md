@@ -5,7 +5,9 @@ January 23rd, 2019
 Git Hub Project
 
 ### Description
-Describe what your project is about and what it does
+Part of Git Hub course at Udacity-Programming for Data Science. 
+We are asked to fork a remote repository and then add a ptyhon code in a cloned repository.
+This python code is about to give some stats based on data of bike share in Washington, New York and Chicago.
 
 ### Files used
 Include the files used
