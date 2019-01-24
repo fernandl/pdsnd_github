@@ -10,7 +10,7 @@ We are asked to fork a remote repository and then add a ptyhon code in a cloned 
 This python code is about to give some stats based on data of bike share in Washington, New York and Chicago.
 
 ### Files used
-Include the files used
+bykesaher.py, washington.csv, new_york.csv, chicago.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
